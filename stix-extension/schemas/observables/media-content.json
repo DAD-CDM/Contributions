@@ -1,0 +1,50 @@
+{
+  "$id": "https://raw.githubusercontent.com/DAD-CDM/Contributions/stix-extension/schemas/sdos/media-content.json",
+  "$schema": "http://json-schema.org/draft/2020-12/schema#",
+  "title": "media-content",
+  "description": "Modelization of a media content such as a tweet, a blog post, etc.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "../common/cyber-observable-core.json"
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "The type of this object, which MUST be the literal `media-content`.",
+          "enum": [
+            "media-content"
+          ]
+        },
+        "id": {
+          "title": "id",
+          "pattern": "^media-content--"
+        },
+        "title": {
+          "type": "string",
+          "description": "Specifies the title of the media content."
+        },
+        "content": {
+          "type": "string",
+          "description": "Specifies the core content of the media content."
+        },
+        "media_category": {
+          "type": "string",
+          "description": "Specifies the media category of the media content."
+        },
+        "url": {
+          "$ref": "../common/url-regex.json",
+          "description": "Specifies the original URL of the media content."
+        },
+        "publication_date": {
+          "$ref": "../common/timestamp.json",
+          "description": "The time that this Media Content has been published."
+        }
+      }
+    }
+  ],
+  "required": [
+    "name"
+  ]
+}

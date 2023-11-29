@@ -1,0 +1,62 @@
+{
+  "$id": "https://raw.githubusercontent.com/DAD-CDM/Contributions/stix-extension/schemas/sdos/event.json",
+  "$schema": "http://json-schema.org/draft/2020-12/schema#",
+  "title": "event",
+  "description": "Events represent a real life event like an election, show, anniversary etc. to provide context in which incidents can take place.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "../common/core.json"
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "The type of this object, which MUST be the literal `event`.",
+          "enum": [
+            "event"
+          ]
+        },
+        "id": {
+          "title": "id",
+          "pattern": "^event--"
+        },
+        "event_types": {
+          "type": "array",
+          "description": "This field specifies the type of Event. Open Vocab - event-type-ov",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "name": {
+          "type": "string",
+          "description": "A name used to identify this Event."
+        },
+        "description": {
+          "type": "string",
+          "description": "A description that provides more details and context about the Event."
+        },
+        "aliases": {
+          "type": "array",
+          "description": "Alternative names used to identify this Event.",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "start_time": {
+          "$ref": "../common/timestamp.json",
+          "description": "The time that this Event starts."
+        },
+        "stop_time": {
+          "$ref": "../common/timestamp.json",
+          "description": "The time that this Event ends."
+        }
+      }
+    }
+  ],
+  "required": [
+    "name"
+  ]
+}
